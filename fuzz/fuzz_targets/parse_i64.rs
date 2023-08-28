@@ -8,7 +8,7 @@ fuzz_target!(|data: &[u8]| {
         return;
     }
     if let Some(b'+') = data.get(0) {
-        // Parsing numbers starting with 0 is not yet supported by `atoi_ismd`
+        // Parsing numbers starting with + is not yet supported by `atoi_ismd`
         return;
     }
     let result = atoi_simd::parse::<i64>(data);

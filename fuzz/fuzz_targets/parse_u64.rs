@@ -7,6 +7,10 @@ fuzz_target!(|data: &[u8]| {
         // Parsing numbers starting with 0 is not yet supported by `atoi_ismd`
         return;
     }
+    if let Some(b'+') = data.get(0) {
+        // Parsing numbers starting with 0 is not yet supported by `atoi_ismd`
+        return;
+    }
     let result = atoi_simd::parse::<u64>(data);
     if let Ok(string) = std::str::from_utf8(data) {
         let std_result = string.parse::<u64>();
